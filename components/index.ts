@@ -6,6 +6,9 @@ import Modal from "./UI/Modals/Modal"
 import AuthModal from "./UI/Modals/AuthModal"
 import Box from "./UI/Box"
 import Header from "./UI/Header"
+import DesktopNavigation from "./UI/Navigation/DesktopNavigation"
+import MobileNavigation from "./UI/Navigation/MobileNavigation"
+import Carousel from "./UI/carousel/Carousel"
 
 export {
   Showcase,
@@ -16,5 +19,8 @@ export {
   AuthModal,
   Box,
   Header,
+  DesktopNavigation,
+  MobileNavigation,
+  Carousel
 
 }

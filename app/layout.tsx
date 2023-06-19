@@ -5,8 +5,6 @@ import { Oswald } from "next/font/google";
 import SupabaseProvider from "@/providers/SupabaseProvider";
 import UserProvider from "@/providers/UserProvider";
 import ModalProvider from "@/providers/ModalProvider";
-import NavigationProvider from "@/providers/NavigationProvider";
-
 const font = Oswald({ subsets: ["latin"] });
 
 export const metadata = {
@@ -24,14 +22,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ToasterProvider />
-        <NavigationProvider>
-          <SupabaseProvider>
-            <UserProvider>
-              <ModalProvider />
-              {children}
-            </UserProvider>
-          </SupabaseProvider>
-        </NavigationProvider>
+        <SupabaseProvider>
+          <UserProvider>
+            <ModalProvider />
+            {children}
+          </UserProvider>
+        </SupabaseProvider>
       </body>
     </html>
   );

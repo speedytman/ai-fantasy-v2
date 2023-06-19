@@ -53,11 +53,11 @@ export interface Subscription {
   prices?: Price;
 }
 
-export interface Song {
+export interface Book {
   id: string;
   user_id: string;
   author: string;
   title: string;
-  song_path: string;
+  description: string;
   image_path: string;
 }

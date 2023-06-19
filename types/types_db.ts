@@ -9,6 +9,105 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      book: {
+        Row: {
+          author: string | null
+          created_at: string | null
+          description: string | null
+          id: number
+          image_path: string | null
+          title: string | null
+          user_id: string | null
+        }
+        Insert: {
+          author?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          image_path?: string | null
+          title?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          author?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          image_path?: string | null
+          title?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      book_chapter: {
+        Row: {
+          book_id: number
+          chapter_id: number
+          created_at: string | null
+        }
+        Insert: {
+          book_id?: number
+          chapter_id: number
+          created_at?: string | null
+        }
+        Update: {
+          book_id?: number
+          chapter_id?: number
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_chapter_book_id_fkey"
+            columns: ["book_id"]
+            referencedRelation: "book"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "book_chapter_chapter_id_fkey"
+            columns: ["chapter_id"]
+            referencedRelation: "chapter"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      chapter: {
+        Row: {
+          content: string | null
+          created_at: string | null
+          id: number
+          title: string | null
+          user_id: string | null
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string | null
+          id?: number
+          title?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          content?: string | null
+          created_at?: string | null
+          id?: number
+          title?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chapter_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       customers: {
         Row: {
           id: string

@@ -1,7 +1,7 @@
 "use client";
 
 import { Box } from "@/components";
-import SidebarNavItem from "@/components/UI/SidebarNavItem";
+import SidebarNavItem from "@/components/UI/Navigation/NavigationItem";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useMemo, useState } from "react";
