@@ -5,8 +5,9 @@ import { Carousel } from "@/components";
 const HomeContent = () => {
   return (
     <div>
-      <h1>New Arrivals</h1>
-      <Carousel />
+      <Carousel title="New Arrivals" />
+      <Carousel title="Continue Reading" />
+      <Carousel title="Picks for You" />
     </div>
   );
 };

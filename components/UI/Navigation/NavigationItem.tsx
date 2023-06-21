@@ -22,7 +22,6 @@ const NavigationItem = ({
   isExpanded,
   size = 25,
 }: NavigationItemProps) => {
-  console.log(size);
   return (
     <>
       {isExpanded ? (

@@ -2,10 +2,13 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import { BiSearch, BiLogOut } from "react-icons/bi";
-import { HiHome } from "react-icons/hi";
-import { IoLibrarySharp } from "react-icons/io5";
-import { GiScrollQuill } from "react-icons/gi";
+import {
+  GiScrollQuill,
+  GiBookshelf,
+  GiMagnifyingGlass,
+  GiHouse,
+  GiExitDoor,
+} from "react-icons/gi";
 import Logo from "../Logo";
 import Button from "../Button";
 import Box from "../Box";
@@ -31,26 +34,25 @@ const DesktopNavigation = ({ children }: DesktopNavigationProps) => {
         label: "Home",
         active: pathname === "/home",
         href: "/home",
-        icon: HiHome,
+        icon: GiHouse,
       },
       {
         label: "Search",
-        active: pathname === "search",
+        active: pathname === "/search",
         href: "/search",
-        icon: BiSearch,
+        icon: GiMagnifyingGlass,
       },
       {
         label: "Library",
-        active: pathname === "library",
+        active: pathname === "/library",
         href: "/library",
-        icon: IoLibrarySharp,
+        icon: GiBookshelf,
       },
       {
         label: "New Book",
-        active: pathname === "book/new",
+        active: pathname === "/book/new",
         href: "/book/new",
         icon: GiScrollQuill,
-        size: 40,
       },
     ],
     [pathname]
@@ -108,23 +110,27 @@ const DesktopNavigation = ({ children }: DesktopNavigationProps) => {
                   href={item.href}
                   icon={item.icon}
                   isExpanded={isExpanded}
-                  size={item.size}
                 />
               ))}
             </div>
           </Box>
           <Box className="py-2 px-5">
             {isExpanded ? (
-              <Button onClick={handleLogout}>Logout</Button>
+              <Button
+                onClick={handleLogout}
+                className="bg-white hover:bg-red-500"
+              >
+                Logout
+              </Button>
             ) : (
               <Tooltip.Root>
                 <Tooltip.Trigger asChild>
-                  <div className="flex justify-center items-center h-full w-full hover:opacity-50 cursor-pointer">
-                    <BiLogOut onClick={handleLogout} size={25} />
+                  <div className="flex justify-center items-center h-full w-full hover:opacity-90 cursor-pointer hover:text-red-500">
+                    <GiExitDoor onClick={handleLogout} size={25} />
                   </div>
                 </Tooltip.Trigger>
                 <Tooltip.Content
-                  className="bg-neutral-300 text-black p-2 rounded-xl text-xs"
+                  className="bg-neutral-300 text-black p-2 rounded-xl text-xs "
                   side="right"
                   sideOffset={5}
                 >

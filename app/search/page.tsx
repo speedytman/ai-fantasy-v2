@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <>
-      {!user ? null : <Box className="h-full p-2 overflow-y-auto">Library</Box>}
+      {!user ? null : <Box className="h-full p-2 overflow-y-auto">Search</Box>}
     </>
   );
 };
