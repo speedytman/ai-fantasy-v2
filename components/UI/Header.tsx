@@ -1,9 +1,6 @@
 "use client";
 
 import { Button } from "@/components";
-import useAuthModal from "@/hooks/useAuthModal";
-import { useUser } from "@/hooks/useUser";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import Logo from "./Logo";
@@ -14,20 +11,15 @@ interface HeaderProps {
 }
 
 const Header = ({ children, className }: HeaderProps) => {
-  const authModal = useAuthModal();
   const router = useRouter();
-  const { user } = useUser();
-
-  if (user) {
-    router.push("/home");
-  }
 
   const handleLogoClick = () => {
-    if (user) {
-      router.push("/home");
-    } else {
-      router.push("/");
-    }
+    // TODO: Handle Logo Click
+    // if (user) {
+    //   router.push("/home");
+    // } else {
+    //   router.push("/");
+    // }
   };
 
   return (
@@ -52,14 +44,17 @@ const Header = ({ children, className }: HeaderProps) => {
         <div className="flex justify-between items-center gap-x-4">
           <div>
             <Button
-              onClick={authModal.onOpen}
+              onClick={() => router.push("/sign-up")}
               className="bg-transparent text-neutral-300 font-medium"
             >
               Sign Up
             </Button>
           </div>
           <div>
-            <Button onClick={authModal.onOpen} className="bg-white px-6 py-2">
+            <Button
+              onClick={() => router.push("/sign-in")}
+              className="bg-white px-6 py-2"
+            >
               Log In
             </Button>
           </div>

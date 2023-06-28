@@ -1,9 +1,8 @@
 import Showcase from "./Showcase"
 import BookCard from "./BookCard"
-import Button from "./UI/Button"
-import Input from "./UI/Input"
+import Button from "./UI/Buttons/Button"
+import Input from "./UI/inputs/Input"
 import Modal from "./UI/Modals/Modal"
-import AuthModal from "./UI/Modals/AuthModal"
 import Box from "./UI/Box"
 import Header from "./UI/Header"
 import DesktopNavigation from "./UI/Navigation/DesktopNavigation"
@@ -16,7 +15,6 @@ export {
   Button,
   Input,
   Modal,
-  AuthModal,
   Box,
   Header,
   DesktopNavigation,

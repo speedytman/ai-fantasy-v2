@@ -16,8 +16,8 @@ enum LikeType {
 }
 
 model Account {
-  id                Int     @id @default(autoincrement())
-  userId            Int
+  id                String  @id @default(cuid())
+  userId            String
   type              String
   provider          String
   providerAccountId String
@@ -35,17 +35,18 @@ model Account {
 }
 
 model Session {
-  id           Int      @id @default(autoincrement())
+  id           String   @id @default(cuid())
   sessionToken String   @unique
-  userId       Int
+  userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id             Int       @id @default(autoincrement())
+  id             String    @id @default(cuid())
   username       String?   @unique
   email          String?   @unique
+  name           String?
   emailVerified  DateTime?
   image          String?
   hashedPassword String?
@@ -64,13 +65,13 @@ model User {
 }
 
 model Book {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(cuid())
   title     String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   chapters  Chapter[]
 
-  authorId    Int?
+  authorId    String?
   Author      User?          @relation("CreatedBy", fields: [authorId], references: [id])
   subscribers Subscription[]
 
@@ -78,50 +79,50 @@ model Book {
 }
 
 model Subscription {
-  user   User @relation(fields: [userId], references: [id])
-  userId Int
-  book   Book @relation(fields: [bookId], references: [id])
-  bookId Int
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  book   Book   @relation(fields: [bookId], references: [id])
+  bookId String
 
   @@id([userId, bookId])
 }
 
 model Chapter {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(cuid())
   title     String
   content   Json?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   author    User      @relation(fields: [authorId], references: [id])
-  authorId  Int
+  authorId  String
   book      Book      @relation(fields: [bookId], references: [id])
-  bookId    Int
+  bookId    String
   comments  Comment[]
   likes     Like[]
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   text      String
   createdAt DateTime @default(now())
   author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
+  authorId  String
   chapter   Chapter  @relation(fields: [chapterId], references: [id])
-  chapterId Int
+  chapterId String
 
-  replyToId Int?
+  replyToId String?
   replyTo   Comment?  @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   replies   Comment[] @relation("ReplyTo")
 
   likes    CommentLike[]
-  comentId Int?
+  comentId String?
 }
 
 model Like {
   user      User     @relation(fields: [userId], references: [id])
-  userId    Int
+  userId    String
   chapter   Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
-  chapterId Int
+  chapterId String
   type      LikeType
 
   @@id([userId, chapterId])
@@ -129,9 +130,9 @@ model Like {
 
 model CommentLike {
   user      User     @relation(fields: [userId], references: [id])
-  userId    Int
+  userId    String
   comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
-  commentId Int
+  commentId String
   type      LikeType
 
   @@id([userId, commentId])

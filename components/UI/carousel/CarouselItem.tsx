@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import Button from "../Button";
+import Button from "../Buttons/Button";
 
 interface CarouselItemProps {
   title: string;

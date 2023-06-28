@@ -2,9 +2,6 @@ import ToasterProvider from "@/providers/ToasterProvider";
 import "./globals.css";
 
 import { Oswald } from "next/font/google";
-import SupabaseProvider from "@/providers/SupabaseProvider";
-import UserProvider from "@/providers/UserProvider";
-import ModalProvider from "@/providers/ModalProvider";
 import { WindowContextProvider } from "@/context/WindowContext";
 const font = Oswald({ subsets: ["latin"] });
 
@@ -24,12 +21,7 @@ export default function RootLayout({
       <body className={font.className}>
         <WindowContextProvider>
           <ToasterProvider />
-          <SupabaseProvider>
-            <UserProvider>
-              <ModalProvider />
-              {children}
-            </UserProvider>
-          </SupabaseProvider>
+          {children}
         </WindowContextProvider>
       </body>
     </html>

@@ -10,11 +10,10 @@ import {
   GiExitDoor,
 } from "react-icons/gi";
 import Logo from "../Logo";
-import Button from "../Button";
+import Button from "../Buttons/Button";
 import Box from "../Box";
 import NavigationItem from "./NavigationItem";
 import { twMerge } from "tailwind-merge";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { toast } from "react-hot-toast";
 import * as Tooltip from "@radix-ui/react-tooltip";
 
@@ -25,7 +24,6 @@ interface DesktopNavigationProps {
 const DesktopNavigation = ({ children }: DesktopNavigationProps) => {
   const pathname = usePathname();
   const [isExpanded, setIsExpanded] = useState(false);
-  const supabaseClient = useSupabaseClient();
   const router = useRouter();
 
   const routes = useMemo(
@@ -63,15 +61,7 @@ const DesktopNavigation = ({ children }: DesktopNavigationProps) => {
   };
 
   const handleLogout = async () => {
-    const { error } = await supabaseClient.auth.signOut();
-
-    router.push("/");
-
-    if (error) {
-      toast.error(error.message);
-    } else {
-      toast.success("Logged out!");
-    }
+    //TODO: Handle LogOut
   };
 
   return (
