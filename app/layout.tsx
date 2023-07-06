@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ToasterProvider />
-        <main>{children}</main>
+        <main className="h-full">{children}</main>
       </body>
     </html>
   );
