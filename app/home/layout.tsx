@@ -1,9 +1,14 @@
-"use client";
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
-import { DesktopNavigation } from "@/components";
+const layout = async ({ children }: { children: React.ReactNode }) => {
+  const session = await auth();
 
-const layout = ({ children }: { children: React.ReactNode }) => {
-  return <DesktopNavigation>{children}</DesktopNavigation>;
+  if (!session) {
+    redirect("/");
+  }
+  console.log(session?.user);
+  return <>{children}</>;
 };
 
 export default layout;

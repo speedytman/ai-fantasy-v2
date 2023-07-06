@@ -3,6 +3,7 @@ import "./globals.css";
 
 import { Oswald } from "next/font/google";
 import { WindowContextProvider } from "@/context/WindowContext";
+import { SessionProvider } from "next-auth/react";
 const font = Oswald({ subsets: ["latin"] });
 
 export const metadata = {
@@ -19,10 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <WindowContextProvider>
-          <ToasterProvider />
-          {children}
-        </WindowContextProvider>
+        <ToasterProvider />
+        <main>{children}</main>
       </body>
     </html>
   );

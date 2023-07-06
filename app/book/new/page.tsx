@@ -1,17 +1,14 @@
-"use client";
-
 import { Box } from "@/components";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
-import NewBookContent from "./components/NewBookContent";
+import NewBookForm from "./components/NewBookForm";
 
 const Home = () => {
-  const router = useRouter();
-
   return (
     <>
-      <Box className="h-full p-2 overflow-y-auto">
-        <NewBookContent />
+      <Box className="h-full w-full p-2 overflow-y-auto flex flex-col items-center">
+        <div className="flex flex-col items-center w-1/2">
+          <h1 className="text-3xl mb-4">Create New Book</h1>
+          <NewBookForm />
+        </div>
       </Box>
     </>
   );

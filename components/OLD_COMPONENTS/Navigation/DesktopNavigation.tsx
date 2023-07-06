@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useMemo, useState } from "react";
 import {
   GiScrollQuill,
@@ -11,10 +11,9 @@ import {
 } from "react-icons/gi";
 import Logo from "../Logo";
 import Button from "../Buttons/Button";
-import Box from "../Box";
+import Box from "../OLD_COMPONENTS/Box";
 import NavigationItem from "./NavigationItem";
 import { twMerge } from "tailwind-merge";
-import { toast } from "react-hot-toast";
 import * as Tooltip from "@radix-ui/react-tooltip";
 
 interface DesktopNavigationProps {
@@ -24,7 +23,6 @@ interface DesktopNavigationProps {
 const DesktopNavigation = ({ children }: DesktopNavigationProps) => {
   const pathname = usePathname();
   const [isExpanded, setIsExpanded] = useState(false);
-  const router = useRouter();
 
   const routes = useMemo(
     () => [

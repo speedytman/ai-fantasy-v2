@@ -1,5 +1,3 @@
-"use client";
-
 import { DesktopNavigation } from "@/components";
 
 const layout = ({ children }: { children: React.ReactNode }) => {

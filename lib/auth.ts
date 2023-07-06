@@ -67,8 +67,9 @@ export const authOptions: NextAuthOptions = {
       }
     },
     redirect() {
-      return '/home'
+      return '/'
     },
   },
 }
  
+export const auth = () => getServerSession(authOptions)
