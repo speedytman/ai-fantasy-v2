@@ -33,12 +33,6 @@ const Account = ({ user }: { user: User }) => {
     await signOut();
     router.refresh();
   };
-  const routes = [
-    {
-      href: "settings",
-      label: "Settings",
-    },
-  ];
   return (
     <>
       <DropdownMenu>
