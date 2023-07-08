@@ -1,9 +1,10 @@
-import ToasterProvider from "@/providers/ToasterProvider";
+import ToasterProvider from "@/providers/toaster-provider";
 import "./globals.css";
 
 import { Oswald } from "next/font/google";
 import { WindowContextProvider } from "@/context/WindowContext";
 import { SessionProvider } from "next-auth/react";
+import { ModalProvider } from "@/providers/modal-provider";
 const font = Oswald({ subsets: ["latin"] });
 
 export const metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ToasterProvider />
+        <ModalProvider />
         <main className="h-full">{children}</main>
       </body>
     </html>

@@ -72,11 +72,15 @@ const Header = ({ session }: { session: Session }) => {
             size={45}
             isExpanded
             onClick={() => router.push("/")}
-            classname={cn("", isScrolled ? "text-white" : "text-black")}
+            className={cn(isScrolled ? "text-white" : "text-black")}
           />
           <div className="flex w-full items-center justify-start gap-8 px-8">
             {routes.map((item) => (
-              <Link key={item.href} href={item.href}>
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(isScrolled ? "text-white" : "text-black")}
+              >
                 {item.label}
               </Link>
             ))}
@@ -101,7 +105,7 @@ const Header = ({ session }: { session: Session }) => {
           size={45}
           isExpanded
           onClick={() => router.push("/")}
-          classname={cn(isScrolled ? "text-white" : "text-black")}
+          className={cn(isScrolled ? "text-white" : "text-black")}
         />
         <div>
           <Sheet>

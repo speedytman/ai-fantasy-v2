@@ -63,7 +63,7 @@ const Hero = () => {
             key={hero.id}
             title={hero.title}
             description={hero.description}
-            actionLabel={hero.id}
+            id={hero.id}
           />
         ) : null
       )}

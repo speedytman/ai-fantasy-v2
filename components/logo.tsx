@@ -7,16 +7,16 @@ interface LogoProps {
   onClick?: () => void;
   isExpanded?: boolean;
   size?: number;
-  classname?: string;
+  className?: string;
 }
 
-const Logo = ({ onClick, isExpanded, size = 25, classname }: LogoProps) => {
+const Logo = ({ onClick, isExpanded, size = 25, className }: LogoProps) => {
   return (
     <div
       onClick={onClick}
       className={cn(
         "flex flex-row gap-x-1 items-center justify-center cursor-pointer hover:opacity-90",
-        classname
+        className
       )}
     >
       <GiAncientSword size={size} />
