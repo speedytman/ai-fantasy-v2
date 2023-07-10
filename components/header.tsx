@@ -89,7 +89,10 @@ const Header = ({ session }: { session: Session }) => {
             {!session?.user ? (
               <Link
                 href="/sign-in"
-                className={cn(buttonVariants({ variant: "ghost" }))}
+                className={cn(
+                  buttonVariants({ variant: "ghost" }),
+                  isScrolled ? "text-white" : "text-black"
+                )}
               >
                 Login
               </Link>
@@ -123,7 +126,7 @@ const Header = ({ session }: { session: Session }) => {
               </SheetHeader>
               <div className="flex flex-col gap-y-2">
                 {routes.map((item) => (
-                  <Link key={item.href} href={item.href}>
+                  <Link key={Math.random().toString()} href={item.href}>
                     {item.label}
                   </Link>
                 ))}

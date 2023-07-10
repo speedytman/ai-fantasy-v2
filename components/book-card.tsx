@@ -10,7 +10,7 @@ interface BookCardProps {
 
 const BookCard: React.FC<BookCardProps> = ({ title, author, id }) => {
   return (
-    <div className="w-1/2 group/card rounded-lg overflow-hidden">
+    <div className="w-full h-full group/card rounded-lg overflow-hidden">
       <div className="relative w-full h-full">
         <div className="w-full h-full absolute bg-transparent group-hover/card:bg-slate-500/75  transition-colors" />
         <div className="absolute w-full h-full">

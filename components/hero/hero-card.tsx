@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 
 interface HeroCardProps {
@@ -18,7 +18,7 @@ const HeroCard: React.FC<HeroCardProps> = ({ title, description, id }) => {
         src="/images/all_of_me_image.jpg"
         fill
         alt="image"
-        className="absolute"
+        className="object-cover absolute"
       />
       <div className="absolute w-[calc(100%-2rem)] h-[calc(100%-1rem)] m-4 mt-0 bg-white opacity-25"></div>
       <div className="absolute w-full h-full flex justify-center">
