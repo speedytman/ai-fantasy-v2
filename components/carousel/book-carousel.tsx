@@ -2,7 +2,7 @@
 
 import { Book } from "@prisma/client";
 import BookCard from "../book-card";
-import { useEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 
 interface BookCarouselProps {
@@ -129,20 +129,24 @@ const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
   const [scroll, setScroll] = useState<number>(0);
   const [carouselWidth, setCarouselWidth] = useState<number>(0);
   const [cardWidth, setCardWidth] = useState<number>(300 + 8);
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const totalCards = TEST_BOOKS.length;
 
   useEffect(() => {
-    setCarouselWidth(
-      carouselRef.current.offsetWidth -
-        (carouselRef.current.offsetWidth % cardWidth)
-    );
-    function handleResize() {
+    if (carouselRef && carouselRef.current) {
       setCarouselWidth(
         carouselRef.current.offsetWidth -
           (carouselRef.current.offsetWidth % cardWidth)
       );
+    }
+    function handleResize() {
+      if (carouselRef && carouselRef.current) {
+        setCarouselWidth(
+          carouselRef.current.offsetWidth -
+            (carouselRef.current.offsetWidth % cardWidth)
+        );
+      }
     }
     window.addEventListener("resize", handleResize);
 
