@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
+import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 
 const TEST_LIST = [
   {
@@ -50,6 +50,7 @@ const Test = () => {
   const [scroll, setScroll] = useState<number>(0);
   const [width, setWidth] = useState<number>(0);
   const carouselRef = useRef(null);
+  const cardRef = useRef(null);
 
   const cardWidth = 384 + 8;
   const totalCards = TEST_LIST.length;
@@ -70,7 +71,7 @@ const Test = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log();
+  console.log(cardRef.current.offsetWidth);
 
   return (
     <div className="h-full w-full bg-sky-100 flex items-center justify-center">
@@ -91,10 +92,15 @@ const Test = () => {
               return prevState + width;
             });
           }}
-          className="absolute z-10 h-full w-10 bg-black/50 hover:opacity-40 hover:cursor-pointer"
+          className="absolute left-0 p-2 z-10 h-full w-fit"
         >
           <div className="h-full w-full flex justify-center items-center">
-            {"<"}
+            <FaChevronCircleLeft
+              className="absolute text-slate-500 rounded-full shadow-sm hover:text-slate-400 hover:cursor-pointer"
+              size={35}
+              title="Scroll Carousel Left"
+            />
+            <div className="bg-white h-6 w-6" />
           </div>
         </div>
         <div
@@ -107,23 +113,31 @@ const Test = () => {
               return -(totalCards * cardWidth - width);
             });
           }}
-          className="absolute right-0 z-10 h-full w-10 bg-black/50 hover:opacity-40 hover:cursor-pointer"
+          className="absolute right-0 p-2 z-10 h-full w-fit"
         >
           <div className="h-full w-full flex justify-center items-center">
-            {">"}
+            <FaChevronCircleRight
+              className="absolute text-slate-500 rounded-full shadow-sm hover:text-slate-400 hover:cursor-pointer"
+              size={35}
+              title="Scroll Carousel Right"
+            />
+            <div className="bg-white h-6 w-6" />
           </div>
         </div>
         <div className="h-full w-fit flex flex-grow gap-2 px-4 overflow-hidden">
           {TEST_LIST.map((item) => (
             <div
               key={item.id}
+              ref={cardRef}
               className={"h-full w-96 relative"}
               style={{
                 translate: `${scroll}px`,
                 transition: "translate 1s",
               }}
             >
-              <div className="h-full w-full bg-white absolute">{item.id}</div>
+              <div className="h-full w-full bg-yellow-400 absolute">
+                {item.id}
+              </div>
             </div>
           ))}
         </div>

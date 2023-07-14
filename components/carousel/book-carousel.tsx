@@ -2,9 +2,8 @@
 
 import { Book } from "@prisma/client";
 import BookCard from "../book-card";
-import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 
 interface BookCarouselProps {
   bookList: Book[];
@@ -127,56 +126,112 @@ const TEST_BOOKS = [
 ];
 
 const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
-  const [offset, setOffset] = useState<number>(0);
-  const cycleForward = () => {
-    setOffset((prevState) => {
-      console.log(offset);
-      if (prevState > 0) return prevState + 100;
-      if (prevState < 0) return 0;
-      if (prevState === 0) return prevState + 100;
-      return 0;
-    });
-  };
-  const cycleBackward = () => {
-    setOffset((prevState) => {
-      console.log(offset);
-      if (prevState > 0) return prevState - 100;
-      if (prevState < 0) return 0;
-      if (prevState === 0) return 0;
-      return 0;
-    });
-  };
+  const [scroll, setScroll] = useState<number>(0);
+  const [carouselWidth, setCarouselWidth] = useState<number>(0);
+  const [cardWidth, setCardWidth] = useState<number>(300 + 8);
+  const carouselRef = useRef(null);
+
+  const totalCards = TEST_BOOKS.length;
+
+  useEffect(() => {
+    setCarouselWidth(
+      carouselRef.current.offsetWidth -
+        (carouselRef.current.offsetWidth % cardWidth)
+    );
+    function handleResize() {
+      setCarouselWidth(
+        carouselRef.current.offsetWidth -
+          (carouselRef.current.offsetWidth % cardWidth)
+      );
+    }
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
-    <div className="p-4 flex flex-col justify-between gap-y-2 overflow-hidden">
-      <div
-        className={cn(
-          `min-h-[200px] flex gap-x-2 transition-transform -translate-x-[${offset}dvw]`
-        )}
-      >
-        {TEST_BOOKS.map((book, index) => {
-          return (
-            <div
-              key={Math.random().toString()}
-              className="min-h-[450px] min-w-[300px]"
-            >
-              <BookCard
-                title={book.title}
-                author={book.author}
-                id={book.title}
+    <>
+      <div className="h-full w-full bg-sky-100 flex items-center justify-center">
+        <div
+          ref={carouselRef}
+          className="h-[450px] w-full overflow-hidden relative"
+        >
+          {/* Left Button */}
+          <div
+            onClick={() => {
+              setScroll((prevState) => {
+                if (prevState + carouselWidth > 0) {
+                  if (prevState !== 0) {
+                    return 0;
+                  } else {
+                    return -(totalCards * cardWidth - carouselWidth);
+                  }
+                }
+                return prevState + carouselWidth;
+              });
+            }}
+            className="absolute left-0 p-2 z-10 h-full w-fit"
+          >
+            <div className="h-full w-full flex justify-center items-center">
+              <FaChevronCircleLeft
+                className="absolute text-slate-700 rounded-full shadow-sm hover:text-slate-500 hover:cursor-pointer"
+                size={35}
+                title="Scroll Carousel Left"
               />
+              <div className="bg-white h-6 w-6" />
             </div>
-          );
-        })}
+          </div>
+          {/* Right Button */}
+          <div
+            onClick={() => {
+              setScroll((prevState) => {
+                if (prevState === -(totalCards * cardWidth - carouselWidth))
+                  return 0;
+                if (
+                  prevState - carouselWidth >
+                  -(totalCards * cardWidth - carouselWidth)
+                ) {
+                  return prevState - carouselWidth;
+                }
+                return -(totalCards * cardWidth - carouselWidth);
+              });
+            }}
+            className="absolute right-0 p-2 z-10 h-full w-fit"
+          >
+            <div className="h-full w-full flex justify-center items-center">
+              <FaChevronCircleRight
+                className="absolute text-slate-700 rounded-full shadow-sm hover:text-slate-500 hover:cursor-pointer"
+                size={35}
+                title="Scroll Carousel Right"
+              />
+              <div className="bg-white h-6 w-6" />
+            </div>
+          </div>
+          {/* Carousel Items */}
+          <div className="h-full w-fit flex flex-grow gap-2 px-2 overflow-hidden">
+            {TEST_BOOKS.map((book, index) => {
+              return (
+                <div
+                  key={index}
+                  className={"min-h-[450px] min-w-[300px] relative"}
+                  style={{
+                    translate: `${scroll}px`,
+                    transition: "translate 1s",
+                  }}
+                >
+                  <div>
+                    <BookCard
+                      title={book.title}
+                      author={book.author}
+                      id={book.title}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
-      <div className="flex justify-between">
-        <Button key="Left Button" className="" onClick={cycleBackward}>
-          Left
-        </Button>
-        <Button key="Right Button" className="" onClick={cycleForward}>
-          Right
-        </Button>
-      </div>
-    </div>
+    </>
   );
 };
 
