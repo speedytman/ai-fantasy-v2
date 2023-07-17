@@ -1,6 +1,6 @@
-import { AspectRatio } from "./ui/aspect-ratio";
 import Image from "next/image";
-import { Button } from "./ui/button";
+
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface BookCardProps {
   title: string;
@@ -10,41 +10,24 @@ interface BookCardProps {
 
 const BookCard: React.FC<BookCardProps> = ({ title, author, id }) => {
   return (
-    <div className="w-full h-full group/card rounded-lg overflow-hidden">
-      <div className="relative w-full h-full">
-        <div className="w-full h-full absolute bg-transparent group-hover/card:bg-slate-500/75  transition-colors" />
-        <div className="absolute w-full h-full">
-          <div className="w-full h-full flex flex-col justify-between">
-            <div className="w-full h-fit flex items-center justify-center p-8">
-              <h1 className="text-4xl group-hover/card:text-white transition-colors">
-                {title.toUpperCase()}
-              </h1>
-            </div>
-            <div className="flex justify-center items-center">
-              <Button
-                variant="outline"
-                className="hidden group-hover/card:block text-white bg-transparent w-fit z-50"
-              >
-                Learn More
-              </Button>
-            </div>
-            <div className="w-full h-fit flex items-center justify-center p-8">
-              <p className="text-muted-foreground group-hover/card:text-white transition-colors">
-                by {author}
-              </p>
-            </div>
-          </div>
-        </div>
-        <AspectRatio ratio={1 / 1.5}>
+    <>
+      <div className="w-full h-full group/card overflow-hidden">
+        <AspectRatio ratio={1 / 1}>
           <Image
             src="/images/all_of_me_image.jpg"
             fill
             alt="image"
-            className="object-cover absolute -z-50"
+            className="object-cover absolute -z-50 rounded-lg"
           />
         </AspectRatio>
       </div>
-    </div>
+      <div className="w-full h-fit flex flex-col items-start justify-start p-1">
+        <h1 className="text-xl ">{title.toUpperCase()}</h1>
+        <div className="text-muted-foreground text-sm flex gap-1">
+          By:<p className="text-black">{author}</p>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -1,9 +1,15 @@
 "use client";
 
 import { Book } from "@prisma/client";
-import BookCard from "../book-card";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import BookCard from "@/components/book-card";
+import { useEffect, useRef, useState } from "react";
 import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
+import { Separator } from "@/components/ui/separator";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 interface BookCarouselProps {
   bookList: Book[];
@@ -154,10 +160,12 @@ const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
   }, []);
   return (
     <>
-      <div className="h-full w-full bg-sky-100 flex items-center justify-center">
+      <h1 className="px-6 text-4xl cursor-default">{title}</h1>
+      <Separator className="mx-6 my-2 w-11/12" />
+      <div className="h-fit w-full flex items-center justify-center p-4">
         <div
           ref={carouselRef}
-          className="h-[450px] w-full overflow-hidden relative"
+          className="h-[350px] w-full group overflow-hidden relative"
         >
           {/* Left Button */}
           <div
@@ -173,15 +181,15 @@ const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
                 return prevState + carouselWidth;
               });
             }}
-            className="absolute left-0 p-2 z-10 h-full w-fit"
+            className="absolute left-0 -top-8 p-2 z-10 h-full w-fit"
           >
             <div className="h-full w-full flex justify-center items-center">
               <FaChevronCircleLeft
-                className="absolute text-slate-700 rounded-full shadow-sm hover:text-slate-500 hover:cursor-pointer"
+                className="absolute z-10 text-slate-500/30 rounded-full shadow-sm group-hover:text-slate-500 hover:cursor-pointer transition-colors"
                 size={35}
                 title="Scroll Carousel Left"
               />
-              <div className="bg-white h-6 w-6" />
+              <div className="group-hover:bg-white transition-opacity h-6 w-6" />
             </div>
           </div>
           {/* Right Button */}
@@ -199,37 +207,42 @@ const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
                 return -(totalCards * cardWidth - carouselWidth);
               });
             }}
-            className="absolute right-0 p-2 z-10 h-full w-fit"
+            className="absolute right-0 -top-8 p-2 z-10 h-full w-fit"
           >
             <div className="h-full w-full flex justify-center items-center">
               <FaChevronCircleRight
-                className="absolute text-slate-700 rounded-full shadow-sm hover:text-slate-500 hover:cursor-pointer"
+                className="absolute z-10 text-slate-500/30 rounded-full shadow-sm group-hover:text-slate-500 hover:cursor-pointer"
                 size={35}
                 title="Scroll Carousel Right"
               />
-              <div className="bg-white h-6 w-6" />
+              <div className="bg-white/0 group-hover:bg-white transition-opacity h-6 w-6" />
             </div>
           </div>
           {/* Carousel Items */}
           <div className="h-full w-fit flex flex-grow gap-2 px-2 overflow-hidden">
             {TEST_BOOKS.map((book, index) => {
               return (
-                <div
-                  key={index}
-                  className={"min-h-[450px] min-w-[300px] relative"}
-                  style={{
-                    translate: `${scroll}px`,
-                    transition: "translate 1s",
-                  }}
-                >
-                  <div>
-                    <BookCard
-                      title={book.title}
-                      author={book.author}
-                      id={book.title}
-                    />
-                  </div>
-                </div>
+                <HoverCard>
+                  <HoverCardTrigger>
+                    <div
+                      key={index}
+                      className={"min-h-[450px] min-w-[300px] relative"}
+                      style={{
+                        translate: `${scroll}px`,
+                        transition: "translate 1s",
+                      }}
+                    >
+                      <div>
+                        <BookCard
+                          title={book.title}
+                          author={book.author}
+                          id={book.title}
+                        />
+                      </div>
+                    </div>
+                  </HoverCardTrigger>
+                  <HoverCardContent side="right">{book.title}</HoverCardContent>
+                </HoverCard>
               );
             })}
           </div>

@@ -77,7 +77,7 @@ const Header = ({ session }: { session: Session }) => {
           <div className="flex w-full items-center justify-start gap-8 px-8">
             {routes.map((item) => (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
                 className={cn(isScrolled ? "text-white" : "text-black")}
               >
@@ -126,7 +126,7 @@ const Header = ({ session }: { session: Session }) => {
               </SheetHeader>
               <div className="flex flex-col gap-y-2">
                 {routes.map((item) => (
-                  <Link key={Math.random().toString()} href={item.href}>
+                  <Link key={item.label} href={item.href}>
                     {item.label}
                   </Link>
                 ))}

@@ -56,7 +56,7 @@ const Hero = () => {
   // }, [setHeroIndex]);
 
   return (
-    <div className="w-full h-full bg-slate-800 text-white relative">
+    <div className="w-full h-full tall:h-4/5 xtratall:h-3/5 bg-slate-800 text-white relative">
       {TEST_HERO_ITEMS.map((hero, i) =>
         i === heroIndex ? (
           <HeroCard
