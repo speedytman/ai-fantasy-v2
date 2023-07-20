@@ -15,6 +15,7 @@ export default async function Layout({
   return (
     <>
       <Header session={session!} />
+      <div className="pt-16" />
       {children}
     </>
   );

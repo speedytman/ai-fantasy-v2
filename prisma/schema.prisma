@@ -73,8 +73,9 @@ model Book {
   updatedAt   DateTime  @updatedAt
   chapters    Chapter[]
 
-  authorId    String?
-  Author      User?          @relation("CreatedBy", fields: [authorId], references: [id])
+  authorId String?
+  Author   User?   @relation("CreatedBy", fields: [authorId], references: [username])
+
   subscribers Subscription[]
 
   @@index([title])

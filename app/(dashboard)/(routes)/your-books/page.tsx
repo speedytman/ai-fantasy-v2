@@ -1,11 +1,10 @@
 import { auth } from "@/lib/auth";
 import YourBookClient from "./components/client";
 import { db } from "@/lib/db";
-import { useRouter } from "next/navigation";
 
 const YourBooksPage = async () => {
   const session = await auth();
-  const userId = session?.user.id;
+  const userId = session?.user.username;
   const books = await db.book.findMany({
     where: {
       authorId: userId,

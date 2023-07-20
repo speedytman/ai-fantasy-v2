@@ -41,7 +41,7 @@ export async function POST(
         title,
         description,
         imageUrl,
-        authorId: userId
+        authorId: user?.username
       }
     })
 

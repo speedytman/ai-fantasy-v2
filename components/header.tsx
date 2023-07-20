@@ -16,7 +16,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "./ui/sheet";
+} from "@/components/ui/sheet";
 
 const Header = ({ session }: { session: Session }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);

@@ -1,4 +1,3 @@
-import BookCard from "@/components/book-card";
 import BookCarousel from "@/components/carousel/book-carousel";
 import Hero from "@/components/hero/hero";
 import { db } from "@/lib/db";

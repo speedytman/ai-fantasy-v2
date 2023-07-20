@@ -19,11 +19,11 @@ const YourBookClient: React.FC<YourBookClientProps> = ({ books }) => {
         </div>
         <Button onClick={() => router.push(`/your-books/new`)}>Add New</Button>
       </div>
-      <div className="grid grid-cols-3 gap-y-8">
+      <div className="grid grid-cols-3 gap-2 gap-y-8 p-4">
         {books.map((book) => (
           <div
             onClick={() => router.push(`/your-books/${book.id}`)}
-            className="max-h-fit max-w-fit p-1 rounded-lg border-2 border-white border-dotted hover:border-slate-300 hover:cursor-pointer"
+            className="max-h-full max-w-ful p-0.5 rounded-lg border-2 border-white border-dotted hover:border-slate-300 hover:cursor-pointer"
           >
             <BookCard title={book.title} author={book.authorId!} id={book.id} />
           </div>
