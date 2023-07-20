@@ -13,6 +13,8 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
+import ImageUpload from "@/components/ui/image-upload";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Book } from "@prisma/client";
 import axios from "axios";
@@ -20,8 +22,9 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import TextareaAutosize from "react-textarea-autosize";
-import ImageUpload from "@/components/ui/image-upload";
+
+import { FaTrashAlt } from "react-icons/fa";
+import { IoIosArrowBack } from "react-icons/io";
 
 const formSchema = z.object({
   title: z.string().min(3).max(30),
@@ -66,7 +69,11 @@ const BookForm: React.FC<BookFormProps> = ({ initialData }) => {
       router.refresh();
       toast({
         title: toastMessage,
+        variant: "default",
       });
+      if (!initialData) {
+        router.push("/your-books");
+      }
     } catch (error) {
       toast({
         title: "Something went wrong.",
@@ -95,6 +102,7 @@ const BookForm: React.FC<BookFormProps> = ({ initialData }) => {
     } finally {
       setLoading(false);
       setOpen(false);
+      router.push("/your-books");
     }
   };
 
@@ -106,18 +114,25 @@ const BookForm: React.FC<BookFormProps> = ({ initialData }) => {
         onConfirm={onDelete}
         loading={loading}
       />
-      <div>
-        Heading
-        {initialData && (
-          <Button
-            disabled={loading}
-            variant="destructive"
-            size="sm"
-            onClick={() => setOpen(true)}
-          >
-            Trash
-          </Button>
-        )}
+      <div className="">
+        <div className="w-full flex justify-between p-2 items-center">
+          <div className="flex flex-col gap-y-2">
+            <h1 className="text-4xl font-bold tracking-tight">{pageTitle}</h1>
+            <p className="text-sm text-muted-foreground">{pageDescription}</p>
+          </div>
+          <div>
+            {initialData && (
+              <Button
+                disabled={loading}
+                variant="destructive"
+                size="sm"
+                onClick={() => setOpen(true)}
+              >
+                <FaTrashAlt className="text-slate-50" />
+              </Button>
+            )}
+          </div>
+        </div>
         <Separator />
         <Form {...form}>
           <form
@@ -125,7 +140,7 @@ const BookForm: React.FC<BookFormProps> = ({ initialData }) => {
             className="space-y-8 w-full"
           >
             {/* Add Image AI Image Creation and Upload */}
-            <div className="md:grid md:grid-cols-3 gap-8">
+            <div className="md:grid md:grid-cols-3 gap-8 p-4">
               <FormField
                 control={form.control}
                 name="title"
@@ -152,7 +167,7 @@ const BookForm: React.FC<BookFormProps> = ({ initialData }) => {
                       <Textarea
                         disabled={loading}
                         placeholder="Description..."
-                        className="resize-none min-h-[40dvh]"
+                        className="resize-none h-full"
                         {...field}
                       />
                     </FormControl>
@@ -160,9 +175,19 @@ const BookForm: React.FC<BookFormProps> = ({ initialData }) => {
                 )}
               />
             </div>
-            <Button disabled={loading} className="ml-auto" type="submit">
-              {action}
-            </Button>
+            <Separator />
+            <div className="flex">
+              <Button
+                variant="outline"
+                size="default"
+                onClick={() => router.push("/your-books")}
+              >
+                Cancel
+              </Button>
+              <Button disabled={loading} className="ml-auto" type="submit">
+                {action}
+              </Button>
+            </div>
           </form>
         </Form>
       </div>

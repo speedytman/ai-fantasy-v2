@@ -1,7 +1,17 @@
-export default function DashboardLayout({
+import Header from "@/components/header";
+import { auth } from "@/lib/auth";
+
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  const session = await auth();
+  return (
+    <>
+      <Header session={session!} />
+      <div className="pt-16" />
+      {children}
+    </>
+  );
 }

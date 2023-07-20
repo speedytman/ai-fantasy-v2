@@ -10,8 +10,8 @@ interface BookCardProps {
 
 const BookCard: React.FC<BookCardProps> = ({ title, author, id }) => {
   return (
-    <>
-      <div className="w-full h-full group/card overflow-hidden">
+    <div className="flex flex-col">
+      <div className="w-full group/card overflow-hidden">
         <AspectRatio ratio={1 / 1}>
           <Image
             src="/images/all_of_me_image.jpg"
@@ -27,7 +27,7 @@ const BookCard: React.FC<BookCardProps> = ({ title, author, id }) => {
           By:<p className="text-black">{author}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

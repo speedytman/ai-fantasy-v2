@@ -25,19 +25,20 @@ const Header = ({ session }: { session: Session }) => {
   const routes = [
     {
       href: "/",
-      label: "Test 1",
+      label: "Read",
     },
     {
       href: "/",
-      label: "Test 2",
+      label: "Search",
     },
     {
       href: "/",
-      label: "Test 3",
+      label: "Random",
     },
     {
-      href: "/",
-      label: "Test 4",
+      href: "/your-books",
+      label: "Your Books",
+      authRequired: true,
     },
   ];
 
@@ -61,7 +62,7 @@ const Header = ({ session }: { session: Session }) => {
   return (
     <div
       className={cn(
-        "h-16 w-full fixed transition-colors z-10 flex justify-center",
+        "h-16 w-full fixed transition-colors z-50 flex justify-center",
         isScrolled ? "bg-slate-950" : "bg-transparent"
       )}
     >
@@ -75,15 +76,29 @@ const Header = ({ session }: { session: Session }) => {
             className={cn(isScrolled ? "text-white" : "text-black")}
           />
           <div className="flex w-full items-center justify-start gap-8 px-8">
-            {routes.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={cn(isScrolled ? "text-white" : "text-black")}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {routes.map((item) => {
+              if (!item.authRequired) {
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={cn(isScrolled ? "text-white" : "text-black")}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              } else if (item.authRequired && session?.user) {
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={cn(isScrolled ? "text-white" : "text-black")}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              } else return;
+            })}
           </div>
           <div className="flex">
             {!session?.user ? (

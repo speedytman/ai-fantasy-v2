@@ -223,7 +223,7 @@ const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
             {TEST_BOOKS.map((book, index) => {
               return (
                 <HoverCard>
-                  <HoverCardTrigger>
+                  <HoverCardTrigger asChild>
                     <div
                       key={index}
                       className={"min-h-[450px] min-w-[300px] relative"}
@@ -241,7 +241,14 @@ const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
                       </div>
                     </div>
                   </HoverCardTrigger>
-                  <HoverCardContent side="right">{book.title}</HoverCardContent>
+                  <HoverCardContent
+                    side="right"
+                    sideOffset={5}
+                    align="start"
+                    className="h-96 w-fit"
+                  >
+                    {book.title}
+                  </HoverCardContent>
                 </HoverCard>
               );
             })}
