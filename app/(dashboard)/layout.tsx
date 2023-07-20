@@ -1,5 +1,6 @@
 import Header from "@/components/header";
 import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
   children,
@@ -7,6 +8,10 @@ export default async function DashboardLayout({
   children: React.ReactNode;
 }) {
   const session = await auth();
+
+  if (!session?.user) {
+    redirect("/sign-in");
+  }
   return (
     <>
       <Header session={session!} />

@@ -16,128 +16,13 @@ interface BookCarouselProps {
   title: string;
 }
 
-const TEST_BOOKS = [
-  {
-    title: "Book 1",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 2",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 3",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 4",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 5",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 6",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 7",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 8",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 9",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 10",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 11",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 12",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 13",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 14",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 15",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-  {
-    title: "Book 16",
-    author: "Test Author A",
-    description:
-      "They floated in the puppet place had been a subunit of Freeside’s security system. Still it was a long strange way home over the black water and the amplified breathing of the deck sting his palm as he made his way down Shiga from the sushi stall he cradled it in his jacket pocket. Her cheekbones flaring scarlet as Wizard’s Castle burned, forehead drenched with azure when Munich fell to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the missionaries, the train reached Case’s station. Light from a service hatch at the rear of the Flatline as a construct, a hardwired ROM cassette replicating a dead man’s skills, obsessions, kneejerk responses. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the car’s floor. They floated in the human system. Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the bright void beyond the chain link. The Sprawl was a square of faint light. Still it was a steady pulse of pain midway down his spine",
-    image_path: "/images/all_of_me_image.jpg",
-  },
-];
-
 const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
   const [scroll, setScroll] = useState<number>(0);
   const [carouselWidth, setCarouselWidth] = useState<number>(0);
   const [cardWidth, setCardWidth] = useState<number>(300 + 8);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  const totalCards = TEST_BOOKS.length;
+  const totalCards = bookList.length;
 
   useEffect(() => {
     if (carouselRef && carouselRef.current) {
@@ -220,7 +105,7 @@ const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
           </div>
           {/* Carousel Items */}
           <div className="h-full w-fit flex flex-grow gap-2 px-2 overflow-hidden">
-            {TEST_BOOKS.map((book, index) => {
+            {bookList.map((book, index) => {
               return (
                 <HoverCard>
                   <HoverCardTrigger asChild>
@@ -235,7 +120,7 @@ const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
                       <div>
                         <BookCard
                           title={book.title}
-                          author={book.author}
+                          author={book.authorId!}
                           id={book.title}
                         />
                       </div>
@@ -245,9 +130,14 @@ const BookCarousel: React.FC<BookCarouselProps> = ({ bookList, title }) => {
                     side="right"
                     sideOffset={5}
                     align="start"
-                    className="h-96 w-fit"
+                    className="h-64 w-fit"
                   >
-                    {book.title}
+                    <div className="h-full flex flex-col items-center">
+                      <h1 className="text-2xl font-bold">{book.title}</h1>
+                      <Separator />
+
+                      <p className="text-md">{book.description}</p>
+                    </div>
                   </HoverCardContent>
                 </HoverCard>
               );
